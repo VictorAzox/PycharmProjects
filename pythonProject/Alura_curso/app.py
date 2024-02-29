@@ -1,10 +1,6 @@
 import os
 
-restaurantes = [{'nome': 'Pobres Lanches','categoria' : 'Hamburger',' Ativo' : False},
-                {'nome': 'Ricos Lanches ', 'categoria':'Japonesa', 'Ativo': True},
-                {'nome': 'Pizza Suprema', 'categoria': 'Italiano', 'Ativo': False}
-                ]
-
+restaurantes = ['Pobres Lanches', 'Lanches Ricos']
 
 
 def exiber_nome_programa():
@@ -43,16 +39,17 @@ def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastro de Novos Restaurantes')
   
     nome_restaurante = input("Digite o nome do Restaurante de que desaja cadastrar: ")
-    restaurantes.append(nome_restaurante)
+    categoria = input(f'Digite o nome da categoria do restaurante {nome_restaurante}: ')
+    dados_do_restaurante = {'nome':nome_restaurante,'categoria':categoria, 'ativo':False}
+
+    restaurantes.append(dados_do_restaurante)
     print(f'O restaurante {nome_restaurante} foi cadastrado com sucesso! ')
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
     exibir_subtitulo('Listar Todos Restaurantes')
-
     for restaurante in restaurantes :
-        nome_restaurante = restaurante['Nome']
-        print(f'- {nome_restaurante}')
+        print(f'.{restaurante}')
 
     voltar_ao_menu_principal()
 
@@ -65,9 +62,9 @@ def escolher_opcao():
             cadastrar_novo_restaurante()
         elif opcao_escolhida == 2:
             listar_restaurantes()
-        elif opcao_escolhida == 3:
+        elif opcao_escolhida == 3 :
             print('Ativar Restaurante')
-        elif opcao_escolhida == 4:
+        elif opcao_escolhida == 4 :
             finalizar_app()
         else :
             opcao_invalida()
